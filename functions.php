@@ -165,3 +165,10 @@ class StarterSite extends Timber\Site {
 }
 
 new StarterSite();
+
+// ************************************************************************* //
+
+// Récupère les custom blocks 
+
+require_once 'ALSite/blocks.php';
+
