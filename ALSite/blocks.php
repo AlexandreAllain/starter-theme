@@ -1,21 +1,21 @@
 <?php
+
 /**
  * Enregistrement des blocs personnalisés
  */
 
-require_once 'blocks/plugin/block.php';
-require_once 'blocks/testeur/block.php';
+// Inclure la classe parente Custom_Block
+require_once 'custom_block.php';
 
-$plugin = new Plugin();
-$plugin->register();
-$testeur = new Testeur();
-$testeur->register();
+// Inclure les fichiers de blocs personnalisés
+//require_once 'blocks/plugin/block.php';
+require_once 'blocks/testeur/block.php';
+// Ajoutez ici d'autres fichiers de blocs si nécessaire
 
 $blocks = array(
-    $plugin,
+    //$plugin,
     $testeur,
 );
-
 foreach ( $blocks as $block ) {
     $block->register();
 }

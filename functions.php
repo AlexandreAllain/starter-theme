@@ -168,6 +168,31 @@ new StarterSite();
 
 // ************************************************************************* //
 
+// Ajoute du style au debug 
+
+// Fonction pour personnaliser l'affichage des dumps
+// Inclure la bibliothèque VarDumper de Symfony
+use Symfony\Component\VarDumper\VarDumper;
+
+// Fonction pour personnaliser l'affichage des dumps
+function custom_dump($variable)
+{
+    // Configurer les options d'affichage
+    $options = [
+        'theme' => 'dark', // Changer ici le thème de dump que vous souhaitez utiliser ('light', 'dark' ou 'symfony')
+    ];
+
+    // Personnaliser l'affichage
+    ob_start();
+    VarDumper::dump($variable, null, $options);
+    $output = ob_get_clean();
+
+    // Afficher le dump
+    echo $output;
+}
+
+
+
 // Récupère les custom blocks 
 
 require_once 'ALSite/blocks.php';

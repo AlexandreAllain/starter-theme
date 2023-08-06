@@ -1,31 +1,17 @@
 <?php
+
 /**
  * Nom: Testeur
  * Description: Sert principalement à tester que la logique des blocs ACF fonctionne
  */
 
-// Enregistrement du bloc personnalisé avec des champs ACF
-class Testeur {
-    public function __construct() {
-        add_action( 'acf/init', array( $this, 'register_acf_block_types' ) );
-    }
-
-    public function register_acf_block_types() {
-        acf_register_block_type( array(
-            'name'              => 'Testeur',
-            'title'             => 'Testeur',
-            'description'       => "Présentation d'une extension WordPress",
-            'render_template'   => 'template.twig', // Modèle Twig pour le rendu du bloc
-            'category'          => 'formatting', 
-            'icon'              => 'admin-plugins', 
-            'keywords'          => array( 'Testeur', 'extension', 'add-on' ),
-            'supports'          => array( 'align' => true ), // Ajoutez les options de personnalisation du bloc ici
-            'render_callback'   => array( $this, 'render_custom_block' ), // Fonction de rappel pour rendre le contenu du bloc
-        ) );
-
-        // Ajouter les champs ACF pour le bloc personnalisé
-        $this->add_custom_acf_fields();
-    }
+class Testeur extends Custom_Block  {
+    protected $block_name = 'testeur';
+    protected $block_title = 'Testeur';
+    protected $block_description = 'Block de test sur Wordpress';
+    protected $block_category = 'formatting';
+    protected $block_icon = 'admin-plugins';
+    protected $block_keywords = array( 'Testeur', 'extension', 'add-on' );
 
     // Fonction pour ajouter les champs ACF pour le bloc personnalisé
     public function add_custom_acf_fields() {
@@ -71,6 +57,72 @@ class Testeur {
                     'prepend' => '',
                     'append' => '',
                 ),
+                array(
+                    'key' => 'field_64cfb88d13f41',
+                    'label' => 'groupe',
+                    'name' => 'groupe',
+                    'aria-label' => '',
+                    'type' => 'repeater',
+                    'instructions' => '',
+                    'required' => 0,
+                    'conditional_logic' => 0,
+                    'wrapper' => array(
+                        'width' => '',
+                        'class' => '',
+                        'id' => '',
+                    ),
+                    'layout' => 'table',
+                    'pagination' => 0,
+                    'min' => 0,
+                    'max' => 0,
+                    'collapsed' => '',
+                    'button_label' => 'Ajouter un élément',
+                    'rows_per_page' => 20,
+                    'sub_fields' => array(
+                        array(
+                            'key' => 'field_64cfb8b013f42',
+                            'label' => 'Le test',
+                            'name' => 'le_test',
+                            'aria-label' => '',
+                            'type' => 'text',
+                            'instructions' => '',
+                            'required' => 0,
+                            'conditional_logic' => 0,
+                            'wrapper' => array(
+                                'width' => '',
+                                'class' => '',
+                                'id' => '',
+                            ),
+                            'default_value' => '',
+                            'maxlength' => '',
+                            'placeholder' => '',
+                            'prepend' => '',
+                            'append' => '',
+                            'parent_repeater' => 'field_64cfb88d13f41',
+                        ),
+                        array(
+                            'key' => 'field_64cfb95c121d0',
+                            'label' => 'texte',
+                            'name' => 'texte',
+                            'aria-label' => '',
+                            'type' => 'text',
+                            'instructions' => '',
+                            'required' => 0,
+                            'conditional_logic' => 0,
+                            'wrapper' => array(
+                                'width' => '',
+                                'class' => '',
+                                'id' => '',
+                            ),
+                            'default_value' => '',
+                            'maxlength' => '',
+                            'placeholder' => '',
+                            'prepend' => '',
+                            'append' => '',
+                            'parent_repeater' => 'field_64cfb88d13f41',
+                        ),
+                    ),
+                ),
                 // Ajoutez d'autres champs ACF ici si nécessaire
             );
 
@@ -84,7 +136,7 @@ class Testeur {
                         array(
                             'param' => 'block',
                             'operator' => '==',
-                            'value' => 'acf/testeur', // Remplacez 'acf/plugin' par la valeur du champ 'name' de votre bloc personnalisé
+                            'value' => 'acf/testeur', // Remplacez 'acf/testeur' par la valeur du champ 'name' de votre bloc personnalisé
                         ),
                     ),
                 ),
@@ -116,9 +168,6 @@ class Testeur {
         Timber::render( 'template.twig', $context );
     }
 
-    public function register() {
-        add_action( 'acf/init', array( $this, 'register_acf_block_types' ) );
-    }
 }
 
 // Instancier la classe Plugin
