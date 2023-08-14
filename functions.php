@@ -168,30 +168,23 @@ new StarterSite();
 
 // ************************************************************************* //
 
+// Supprime les message de dépreciation
+
+error_reporting(E_ALL ^ E_DEPRECATED);
+
 // Ajoute du style au debug 
 
-// Fonction pour personnaliser l'affichage des dumps
-// Inclure la bibliothèque VarDumper de Symfony
+require __DIR__ . '/vendor/autoload.php'; // Vérifiez que le chemin est correct
+
 use Symfony\Component\VarDumper\VarDumper;
 
-// Fonction pour personnaliser l'affichage des dumps
-function custom_dump($variable)
-{
-    // Configurer les options d'affichage
-    $options = [
-        'theme' => 'dark', // Changer ici le thème de dump que vous souhaitez utiliser ('light', 'dark' ou 'symfony')
-    ];
+add_filter('get_twig', function (\Twig_Environment $twig) {
+    $twig->addFunction(new \Twig\TwigFunction('dump', function ($data) {
+        VarDumper::dump($data);
+    }));
 
-    // Personnaliser l'affichage
-    ob_start();
-    VarDumper::dump($variable, null, $options);
-    $output = ob_get_clean();
-
-    // Afficher le dump
-    echo $output;
-}
-
-
+    return $twig;
+});
 
 // Récupère les custom blocks 
 

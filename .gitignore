@@ -1,6 +1,7 @@
 # Ignore les fichiers de build
 /dist
 /node_modules
+/vendor
 
 # Ignore les fichiers spécifiques au développement local
 npm-debug.log*
