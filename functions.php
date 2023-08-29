@@ -174,7 +174,7 @@ error_reporting(E_ALL ^ E_DEPRECATED);
 
 // Ajoute du style au debug 
 
-require __DIR__ . '/vendor/autoload.php'; // Vérifiez que le chemin est correct
+require __DIR__ . '/vendor/autoload.php';
 
 use Symfony\Component\VarDumper\VarDumper;
 
@@ -190,3 +190,6 @@ add_filter('get_twig', function (\Twig_Environment $twig) {
 
 require_once 'ALSite/blocks.php';
 
+// Supprime les Gutenberg
+
+require_once 'ALSite/gutenberg.php';

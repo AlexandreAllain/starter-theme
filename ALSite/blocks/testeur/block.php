@@ -18,28 +18,8 @@ class Testeur extends Custom_Block  {
         if ( function_exists( 'acf_add_local_field_group' ) ) {
             $fields = array(
                 array(
-                    'key' => 'field_64ce1sdfsdfcca30fba',
-                    'label' => 'name',
-                    'name' => 'name',
-                    'aria-label' => '',
-                    'type' => 'text',
-                    'instructions' => '',
-                    'required' => 0,
-                    'conditional_logic' => 0,
-                    'wrapper' => array(
-                        'width' => '',
-                        'class' => '',
-                        'id' => '',
-                    ),
-                    'default_value' => '',
-                    'maxlength' => '',
-                    'placeholder' => '',
-                    'prepend' => '',
-                    'append' => '',
-                ),
-                array(
-                    'key' => 'field_64sdfdfce1cqsdqca30fba',
-                    'label' => 'title',
+                    'key' => 'field_64da47491f4fa',
+                    'label' => 'Titre',
                     'name' => 'title',
                     'aria-label' => '',
                     'type' => 'text',
@@ -58,9 +38,29 @@ class Testeur extends Custom_Block  {
                     'append' => '',
                 ),
                 array(
-                    'key' => 'field_64cfb88d13f41',
-                    'label' => 'groupe',
-                    'name' => 'groupe',
+                    'key' => 'field_64da47691f4fb',
+                    'label' => 'Texte',
+                    'name' => 'text',
+                    'aria-label' => '',
+                    'type' => 'wysiwyg',
+                    'instructions' => '',
+                    'required' => 0,
+                    'conditional_logic' => 0,
+                    'wrapper' => array(
+                        'width' => '',
+                        'class' => '',
+                        'id' => '',
+                    ),
+                    'default_value' => '',
+                    'tabs' => 'all',
+                    'toolbar' => 'basic',
+                    'media_upload' => 0,
+                    'delay' => 0,
+                ),
+                array(
+                    'key' => 'field_64da47f21f4fc',
+                    'label' => 'Liste',
+                    'name' => 'list',
                     'aria-label' => '',
                     'type' => 'repeater',
                     'instructions' => '',
@@ -80,9 +80,9 @@ class Testeur extends Custom_Block  {
                     'rows_per_page' => 20,
                     'sub_fields' => array(
                         array(
-                            'key' => 'field_64cfb8b013f42',
-                            'label' => 'Le test',
-                            'name' => 'le_test',
+                            'key' => 'field_64da48011f4fd',
+                            'label' => 'Puce',
+                            'name' => 'item',
                             'aria-label' => '',
                             'type' => 'text',
                             'instructions' => '',
@@ -98,30 +98,34 @@ class Testeur extends Custom_Block  {
                             'placeholder' => '',
                             'prepend' => '',
                             'append' => '',
-                            'parent_repeater' => 'field_64cfb88d13f41',
-                        ),
-                        array(
-                            'key' => 'field_64cfb95c121d0',
-                            'label' => 'texte',
-                            'name' => 'texte',
-                            'aria-label' => '',
-                            'type' => 'text',
-                            'instructions' => '',
-                            'required' => 0,
-                            'conditional_logic' => 0,
-                            'wrapper' => array(
-                                'width' => '',
-                                'class' => '',
-                                'id' => '',
-                            ),
-                            'default_value' => '',
-                            'maxlength' => '',
-                            'placeholder' => '',
-                            'prepend' => '',
-                            'append' => '',
-                            'parent_repeater' => 'field_64cfb88d13f41',
+                            'parent_repeater' => 'field_64da47f21f4fc',
                         ),
                     ),
+                ),
+                array(
+                    'key' => 'field_64da48181f4fe',
+                    'label' => 'Image',
+                    'name' => 'image',
+                    'aria-label' => '',
+                    'type' => 'image',
+                    'instructions' => '',
+                    'required' => 0,
+                    'conditional_logic' => 0,
+                    'wrapper' => array(
+                        'width' => '',
+                        'class' => '',
+                        'id' => '',
+                    ),
+                    'return_format' => 'array',
+                    'library' => 'all',
+                    'min_width' => '',
+                    'min_height' => '',
+                    'min_size' => '',
+                    'max_width' => '',
+                    'max_height' => '',
+                    'max_size' => '',
+                    'mime_types' => '',
+                    'preview_size' => 'medium',
                 ),
                 // Ajoutez d'autres champs ACF ici si nécessaire
             );
@@ -129,7 +133,7 @@ class Testeur extends Custom_Block  {
             // Ajouter les champs ACF pour le bloc personnalisé
             acf_add_local_field_group( array(
                 'key' => 'group_64ce1ccsdfsdfa3ed18',
-                'title' => 'Testeur',
+                'title' => 'Testeur', // Nom du bloc
                 'fields' => $fields,
                 'location' => array(
                     array(
@@ -171,4 +175,4 @@ class Testeur extends Custom_Block  {
 }
 
 // Instancier la classe Plugin
-$testeur = new Testeur();
+$testeur = new Testeur(); // nom du bloc

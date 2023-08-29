@@ -1,6 +1,19 @@
-<div class="c-testeur" style="margin: 0 15px">
-    #TEST#
-    {{ name }}
-    {{ title }}
-    {{ dump(groupe) }}
+<div class="c-tester" style="padding: 15px; border: 2px solid red">
+    <div class="c-tester__text">
+        <h2 class="c-tester__title">{{ title }}</h2>
+        <div class="c-tester__text">
+            {{ text }}
+        </div>
+        <ul class="c-tester__group">
+            {% for item in list %}
+                <li class="c-tester__item">{{ item.item }}</li>
+            {% endfor %}
+        </ul>
+    </div>
+    <img src="{{ TimberImage(image).src|towebp|resize(500, 500) }}" alt="{{ TimberImage(image).alt }}" width="500" height="500"
+         srcset="
+         {{ TimberImage(image).src|towebp|resize(1000, 1000) }} 1000w,
+         {{ TimberImage(image).src|towebp|resize(400, 400) }} 400w,
+         {{ TimberImage(image).src|towebp|resize(300, 300) }} 300w"
+         sizes="(max-width: 300px) 300px, (max-width: 400px) 400px, 500px">
 </div>
