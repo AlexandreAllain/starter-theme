@@ -1,6 +1,6 @@
 <?php
 
-add_filter( 'allowed_block_types', 'al_allowed_block_types' );
+add_filter( 'allowed_block_types_all', 'al_allowed_block_types' );
 
 function al_allowed_block_types( $allowed_blocks ) {
     return array(
@@ -8,5 +8,7 @@ function al_allowed_block_types( $allowed_blocks ) {
         'core/paragraph',
         'core/heading',
         'core/list',
+        'acf/testeur',
+        'acf/gallery'
     );
 }
