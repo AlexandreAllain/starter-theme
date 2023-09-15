@@ -3,10 +3,6 @@
  * Description: Starter Theme to use with Timber
  * Author: Upstatement and YOU!
 */
-body {
-  background-color: aqua;
-}
 
-body {
-  color: rgb(0, 255, 0);
-}
+@import 'test2';
+@import 'test3';
