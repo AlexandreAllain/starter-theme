@@ -190,6 +190,10 @@ add_filter('get_twig', function (\Twig_Environment $twig) {
 
 require_once 'ALSite/blocks.php';
 
+// Récupère les custom blocks (décommenter pour activer)
+
+// require_once 'ALSite/custom_post.php';
+
 // Supprime les Gutenberg
 
 require_once 'ALSite/gutenberg.php';
