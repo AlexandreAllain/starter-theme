@@ -4,9 +4,14 @@
  * Author: Upstatement and YOU!
 */
 body {
-  background-color: rgb(255, 0, 136);
+  background-color: rgb(255, 255, 255);
 }
 
 body {
-  color: rgb(255, 255, 255);
+  color: rgb(0, 0, 0);
+  position: relative;
+}
+
+header {
+  background-color: aqua;
 }
