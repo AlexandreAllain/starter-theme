@@ -11,3 +11,6 @@ yarn-error.log*
 
 .vscode/
 *.code-workspace
+
+# Ignore les fichiers de build
+.env
