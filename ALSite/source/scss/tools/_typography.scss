@@ -1,0 +1,88 @@
+/*******************************************************************************
+ * Infos
+*******************************************************************************/
+
+/**
+ * Name: Fonts
+ * Type: Tool
+**/
+
+/*******************************************************************************
+ * Utils
+*******************************************************************************/
+
+@use "sass:math";
+@use "node_modules/sass-rem/rem";
+@use "../tools/global";
+
+/*******************************************************************************
+* Default styles
+*******************************************************************************/
+
+// Titile
+
+
+// Generate overflowing link with pseudo-element
+@mixin title($root) {
+  .c-#{$root}__mainlink {
+    font-weight: inherit;
+    text-decoration: none;
+    color: inherit;
+
+    &::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+    }
+
+    &:hover {
+      text-decoration: underline;
+      color: inherit;
+    }
+  }
+}
+
+// Headings
+
+@mixin h1 {
+  @include global.fluid-size(28px, 44px);
+  line-height: 1.2;
+}
+
+@mixin h1-alt {
+  @include global.fluid-size(28px, 40px);
+  line-height: 1.2;
+}
+
+@mixin h2 {
+  @include global.fluid-size(26px, 36px);
+  line-height: 1.2;
+}
+
+@mixin h3 {
+  @include global.fluid-size(24px, 32px);
+  line-height: 1.2;
+}
+
+@mixin h4 {
+  font-size: rem.convert(22px);
+  line-height: 1.2;
+}
+
+@mixin h5 {
+  font-size: rem.convert(18px);
+  line-height: 1.2;
+}
+
+@mixin h6 {
+  font-size: rem.convert(16px);
+  line-height: 1.2;
+}
+
+@mixin text {
+  font-size: rem.convert(16px);
+  line-height: inherit;
+}

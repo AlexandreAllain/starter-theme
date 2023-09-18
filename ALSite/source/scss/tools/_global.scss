@@ -1,0 +1,60 @@
+/*******************************************************************************
+ * Infos
+*******************************************************************************/
+
+/**
+ * Name: Global
+ * Type: Tools
+**/
+
+/*******************************************************************************
+ * Utils
+*******************************************************************************/
+
+@use "sass:math";
+@use "node_modules/sass-rem/rem";
+
+/*******************************************************************************
+ * Variables
+*******************************************************************************/
+
+$fluid-size-fallback: false !default;
+
+/*******************************************************************************
+ * Default styles
+*******************************************************************************/
+
+/* stylelint-disable max-line-length */
+@function fluid-size-value($size-min, $size-max, $vw-min: 400px, $vw-max: 960px) {
+  $slope: math.div($size-max - $size-min, $vw-max - $vw-min);
+  $slope-to-unit: $slope * 100 * 1vw;
+  $intercept-rem: rem.convert($size-min - $slope * $vw-min);
+  $size-min-rem: rem.convert($size-min);
+  $size-max-rem: rem.convert($size-max);
+
+  @return clamp(#{$size-min-rem}, #{$slope-to-unit} + #{$intercept-rem}, #{$size-max-rem});
+}
+
+@mixin fluid-size($size-min: 16px, $size-max: 18px, $property: font-size, $vw-min: 400px, $vw-max: 960px) {
+  $u1: math.unit($size-min);
+  $u2: math.unit($size-max);
+  $u3: math.unit($vw-min);
+  $u4: math.unit($vw-max);
+
+  @if $u1 == $u2 and $u1 == $u3 and $u1 == $u4 {
+    $value: fluid-size-value($size-min, $size-max, $vw-min, $vw-max);
+
+    @if $fluid-size-fallback {
+      #{$property}: rem.convert($size-min);
+
+      @supports (#{$property}: clamp(#{ rem.convert($size-min) }, #{ rem.convert($size-limit) } + #{ $vw-const }, #{ rem.convert($size-max) })) {
+        #{$property}: #{ $value };
+      }
+    } @else {
+      #{$property}: #{ $value };
+    }
+  } @else {
+    @error "All units must be the same.";
+  }
+}
+/* stylelint-enable max-line-length */

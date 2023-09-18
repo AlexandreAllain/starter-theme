@@ -1,0 +1,177 @@
+/*******************************************************************************
+ * Infos
+*******************************************************************************/
+
+/**
+ * Name: Richtext
+ * Type: Scope
+**/
+
+/*******************************************************************************
+ * Utils
+*******************************************************************************/
+
+@use "node_modules/sass-em/em";
+@use "node_modules/sass-rem/rem";
+@use "../settings/fonts" as font;
+@use "../settings/colors" as color;
+@use "../tools/typography" as typo;
+@use "../tools/global";
+
+/*******************************************************************************
+ * Variables
+*******************************************************************************/
+
+$richtext-font-size: font.$size-regular;
+$richtext-line-height: 1.5;
+
+/*******************************************************************************
+ * Default styles
+*******************************************************************************/
+
+.s-richtext {
+  --vertical-space: 1.5em;
+  --richtext-color: inherit;
+
+  // Global spacings
+
+  > * {
+    margin-top: 0;
+    margin-bottom: 0;
+
+    + * {
+      margin-top: var(--vertical-space);
+    }
+  }
+
+  // Headings
+
+  h1,
+  .u-h1,
+  h2,
+  .u-h2,
+  h3,
+  .u-h3,
+  h4,
+  .u-h4,
+  h5,
+  .u-h5,
+  h6,
+  .u-h6 {
+    font-weight: font.$bold;
+  }
+
+  h1 + h2,
+  h2 + h3,
+  h3 + h4,
+  h4 + h5,
+  h5 + h6 {
+    margin-top: 0.25em;
+  }
+
+  // Inlines
+
+  strong,
+  b {
+    font-weight: font.$bold;
+  }
+
+  small {
+    font-size: 0.875em;
+  }
+
+  // Links
+
+  a {
+    text-decoration: underline;
+    transition: color 200ms;
+
+    &:hover {
+      text-decoration: none;
+    }
+  }
+
+  // Lists
+
+  ul,
+  ol {
+    padding-left: 2em;
+
+    > * {
+      margin-top: 0;
+
+      + * {
+        margin-top: $richtext-line-height * 0.5em;
+      }
+    }
+
+    ul,
+    ol {
+      margin-top: $richtext-line-height * 0.5em;
+    }
+  }
+
+  ul {
+    list-style-type: disc;
+  }
+
+    li::marker {
+      color: var(--richtext-color);
+      font-weight: font.$bold;
+    }
+
+  // Blockquote
+
+  blockquote {
+    @include global.fluid-size(17px, 20px);
+    padding: em.convert(24px, 20px);
+    margin-right: 0;
+    margin-left: 0;
+    font-style: italic;
+    border-left: rem.convert(1px) solid;
+    border-color: var(--richtext-color);
+
+    > * {
+      margin-top: 0;
+      margin-bottom: 0;
+
+      + * {
+        margin-top: $richtext-line-height * 1em;
+      }
+    }
+  }
+}
+
+/*******************************************************************************
+ * Variants
+*******************************************************************************/
+
+.s-richtext--color {
+  --richtext-color: #{ color.get("primary") };
+
+  li {
+    color: color.get("neutral-500");
+  }
+}
+
+
+
+/*******************************************************************************
+ * Print
+*******************************************************************************/
+
+@media print {
+  .s-richtext {
+    a[href]::after {
+      content: " [" attr(href) "]";
+      font-style: italic;
+      opacity: 0.5;
+    }
+
+    abbr[title]::after {
+      content: " [" attr(title) "]";
+      font-style: italic;
+      opacity: 0.5;
+    }
+  }
+}

@@ -1,0 +1,98 @@
+/*******************************************************************************
+ * Infos
+*******************************************************************************/
+
+/**
+ * Name: Cluster
+ * Type: Object
+**/
+
+/*******************************************************************************
+ * Utils
+*******************************************************************************/
+
+@use "node_modules/sass-rem/rem";
+@use "../settings/spacings" as spacing;
+
+/*******************************************************************************
+ * Variables
+*******************************************************************************/
+
+$cluster-gutter: spacing.$regular;
+$cluster-has-reverse: false !important;
+$cluster-has-center: false !important;
+$cluster-has-middle: true !important;
+$cluster-has-bottom: false !important;
+$cluster-has-fluid: false !important;
+$cluster-has-nowrap: false !important;
+$cluster-has-stretch: false !important;
+
+/*******************************************************************************
+ * Default styles
+*******************************************************************************/
+
+.o-cluster {
+  --space: #{ rem.convert($cluster-gutter) };
+
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  gap: var(--space);
+  padding: 0;
+  list-style: none;
+}
+
+    .o-cluster__item {
+      margin: 0;
+
+      @if $cluster-has-fluid {
+        &.o-cluster__item--fluid {
+            flex-grow: 1;
+        }
+      }
+    }
+
+/*******************************************************************************
+ * Modifiers
+*******************************************************************************/
+
+@if $cluster-has-reverse {
+  .o-cluster--reverse {
+      flex-direction: row-reverse;
+      justify-content: flex-end;
+  }
+}
+
+@if $cluster-has-center {
+  .o-cluster--center {
+    justify-content: center;
+  }
+}
+
+@if $cluster-has-middle {
+  .o-cluster--middle {
+    align-items: center;
+  }
+}
+
+@if $cluster-has-bottom {
+  .o-cluster--bottom {
+    align-items: flex-end;
+  }
+}
+
+@if $cluster-has-nowrap {
+  .o-cluster--nowrap {
+    flex-wrap: nowrap;
+  }
+}
+
+@if $cluster-has-stretch {
+  .o-cluster--stretch {
+    > .o-cluster__item {
+      > * {
+        height: 100%;
+      }
+    }
+  }
+}

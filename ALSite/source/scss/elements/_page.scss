@@ -1,0 +1,79 @@
+/*******************************************************************************
+ * Infos
+*******************************************************************************/
+
+/**
+ * Name: Page
+ * Type: Elements
+ *
+ * Description: Simple page-level setup.
+**/
+
+/*******************************************************************************
+ * Utils
+*******************************************************************************/
+
+@use "sass:map";
+@use "sass:math";
+@use "node_modules/sass-rem/rem";
+@use "../settings/colors" as color;
+@use "../settings/fonts" as font;
+
+/*******************************************************************************
+ * Default styles
+*******************************************************************************/
+
+/**
+ * 1. Set the default `font-size` and `line-height` for the entire project,
+ *    sourced from our default variables. The `font-size` is calculated to exist
+ *    in ems, the `line-height` is calculated to exist unitlessly.
+ * 2. Force scrollbars to always be visible to prevent awkward ‘jumps’ when
+ *    navigating between pages that do/do not have enough content to produce
+ *    scrollbars naturally.
+ * 3. Ensure the page always fills at least the entire height of the viewport.
+**/
+html {
+  display: flex;
+  min-height: 100%; /* [3] */
+  overflow-y: scroll; /* [2] */
+  font-family: font.$default;
+  font-size: 100%; /* [1] */
+  line-height: 1.5; /* [1] */
+  color: map.get(color.$functionals, "foreground");
+  background: map.get(color.$functionals, "background") none;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  scroll-behavior: smooth; /* [4] */
+  scroll-padding-top: rem.convert(20px);
+}
+
+body {
+  width: 100%;
+  margin: 0;
+}
+
+/*******************************************************************************
+ * Print styles
+*******************************************************************************/
+
+@media print {
+  @page {
+    margin: 1cm 1.5cm;
+  }
+
+  html,
+  body {
+    height: auto;
+  }
+
+  html {}
+
+  *,
+  *::before,
+  *::after {
+    color: #000 !important;
+    background: transparent none !important;
+    border-color: #000 !important;
+    box-shadow: none !important;
+  }
+}

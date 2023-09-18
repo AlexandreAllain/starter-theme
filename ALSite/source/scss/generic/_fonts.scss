@@ -1,0 +1,181 @@
+/*******************************************************************************
+ * Infos
+*******************************************************************************/
+
+/**
+ * Name: Fonts
+ * Type: Generic
+**/
+
+/*******************************************************************************
+ * Utils
+*******************************************************************************/
+
+@use "../settings/fonts" as font;
+@use "../tools/fonts";
+
+/*******************************************************************************
+ * Default styles
+*******************************************************************************/
+
+// @include
+//   fonts.font-face(
+//     "Montserrat",
+//     "Montserrat-Thin",
+//     font.$thin,
+//     normal,
+//     $suffix: "-subset"
+// );
+
+// @include
+//   fonts.font-face(
+//     "Montserrat",
+//     "Montserrat-ThinItalic",
+//     font.$thin,
+//     italic,
+//     $suffix: "-subset"
+// );
+
+// @include
+//   fonts.font-face(
+//     "Montserrat",
+//     "Montserrat-ExtraLight",
+//     font.$extralight,
+//     normal,
+//     $suffix: "-subset"
+// );
+
+// @include
+//   fonts.font-face(
+//     "Montserrat",
+//     "Montserrat-ExtraLightItalic",
+//     font.$extralight,
+//     italic,
+//     $suffix: "-subset"
+// );
+
+// @include
+//   fonts.font-face(
+//     "Montserrat",
+//     "Montserrat-Light",
+//     font.$light,
+//     normal,
+//     $suffix: "-subset"
+// );
+
+// @include
+//   fonts.font-face(
+//     "Montserrat",
+//     "Montserrat-LightItalic",
+//     font.$light,
+//     italic,
+//     $suffix: "-subset"
+// );
+
+@include
+  fonts.font-face(
+    "Montserrat",
+    "Montserrat-Regular",
+    font.$regular,
+    normal,
+    $suffix: "-subset"
+);
+
+@include
+  fonts.font-face(
+    "Montserrat",
+    "Montserrat-Italic",
+    font.$regular,
+    italic,
+    $suffix: "-subset"
+);
+
+// @include
+//   fonts.font-face(
+//     "Montserrat",
+//     "Montserrat-Medium",
+//     font.$medium,
+//     normal,
+//     $suffix: "-subset"
+// );
+
+// @include
+//   fonts.font-face(
+//     "Montserrat",
+//     "Montserrat-MediumItalic",
+//     font.$medium,
+//     italic,
+//     $suffix: "-subset"
+// );
+
+// @include
+//   fonts.font-face(
+//     "Montserrat",
+//     "Montserrat-SemiBold",
+//     font.$semibold,
+//     normal,
+//     $suffix: "-subset"
+// );
+
+// @include
+//   fonts.font-face(
+//     "Montserrat",
+//     "Montserrat-SemiBoldItalic",
+//     font.$semibold,
+//     italic,
+//     $suffix: "-subset"
+// );
+
+@include
+  fonts.font-face(
+    "Montserrat",
+    "Montserrat-Bold",
+    font.$bold,
+    normal,
+    $suffix: "-subset"
+);
+
+@include
+  fonts.font-face(
+    "Montserrat",
+    "Montserrat-BoldItalic",
+    font.$bold,
+    italic,
+    $suffix: "-subset"
+);
+
+// @include
+//   fonts.font-face(
+//     "Montserrat",
+//     "Montserrat-ExtraBold",
+//     font.$extrabold,
+//     normal,
+//     $suffix: "-subset"
+// );
+
+// @include
+//   fonts.font-face(
+//     "Montserrat",
+//     "Montserrat-ExtraBoldItalic",
+//     font.$extrabold,
+//     italic,
+//     $suffix: "-subset"
+// );
+
+// @include
+//   fonts.font-face(
+//     "Montserrat",
+//     "Montserrat-Black",
+//     font.$black,
+//     normal,
+//     $suffix: "-subset"
+// );
+
+// @include
+//   fonts.font-face(
+//     "Montserrat",
+//     "Montserrat-BlackItalic",
+//     font.$black,
+//     italic,
+//     $suffix: "-subset"
+// );

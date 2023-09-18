@@ -1,0 +1,45 @@
+/*******************************************************************************
+ * Infos
+*******************************************************************************/
+
+/**
+ * Name: Fonts
+ * Type: Tools
+**/
+
+/*******************************************************************************
+ * Utils
+*******************************************************************************/
+
+@use "../settings/fonts" as font;
+
+/*******************************************************************************
+ * Variables
+*******************************************************************************/
+
+$font-folder: font.$folder;
+
+/*******************************************************************************
+ * Default styles
+*******************************************************************************/
+
+@mixin
+  font-face(
+    $global-font-family,
+    $file-name,
+    $weight: normal,
+    $style: normal,
+    $id: $global-font-family,
+    $suffix: ""
+) {
+  @font-face {
+    font-display: swap;
+    font-family: $global-font-family;
+    font-style: $style;
+    font-weight: $weight;
+    src: url("#{$font-folder}#{$file-name}#{$suffix}.woff");
+    src:
+      url("#{$font-folder}#{$file-name}#{$suffix}.woff2")  format("woff2"),
+      url("#{$font-folder}#{$file-name}#{$suffix}.woff")   format("woff");
+  }
+}

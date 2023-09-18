@@ -1,0 +1,52 @@
+/*******************************************************************************
+ * Infos
+*******************************************************************************/
+
+/**
+ * Name: Focus
+ * Type: Generic
+ *
+ * Description:
+ *   JavaScript polyfill to :focus-visible
+ *   https://github.com/WICG/focus-visible
+**/
+
+/*******************************************************************************
+ * Utils
+*******************************************************************************/
+
+@use "sass:map";
+@use "node_modules/sass-rem/rem";
+@use "../settings/colors" as color;
+
+/*******************************************************************************
+ * Variables
+*******************************************************************************/
+
+$focus-visible-active: false !default;
+
+/*******************************************************************************
+ * Default styles
+*******************************************************************************/
+
+@if $focus-visible-active {
+  /* Remove outline for non-keyboard :focus */
+  .js-focus-visible :focus:not(.focus-visible) {
+    outline: 0;
+  }
+
+  /* Optional: Customize .focus-visible */
+  .focus-visible {
+    outline: rem.convert(2px) solid map.get(color.$descriptives, "primary-500");
+    outline-offset: rem.convert(2px);
+  }
+} @else {
+  :focus:not(:focus-visible) {
+    outline: 0;
+  }
+
+  :focus-visible {
+    outline: rem.convert(2px) solid map.get(color.$descriptives, "primary-500");
+    outline-offset: rem.convert(2px);
+  }
+}

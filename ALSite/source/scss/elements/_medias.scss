@@ -1,0 +1,39 @@
+/*******************************************************************************
+ * Infos
+*******************************************************************************/
+
+/**
+ * Name: Form
+ * Type: Element
+ *
+ * Description:
+ *   1. Fluid images for responsive purposes.
+ *   2. Offset `alt` text from surrounding copy.
+ *   3. Setting `vertical-align` removes the whitespace that appears under `img`
+ *      elements when they are dropped into a page as-is. Safer alternative to
+ *      using `display: block;`.
+**/
+
+/*******************************************************************************
+ * Default styles
+*******************************************************************************/
+
+img,
+video,
+iframe {
+  max-width: 100%; /* [1] */
+  height: auto;
+  font-style: italic; /* [2] */
+  vertical-align: middle; /* [3] */
+}
+
+/*******************************************************************************
+ * Print
+*******************************************************************************/
+
+@media print {
+  img,
+  svg {
+    filter: grayscale(100%) !important;
+  }
+}

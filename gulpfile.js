@@ -5,14 +5,17 @@ const sass = require('gulp-sass')(require('sass'));
 const autoprefixer = require('gulp-autoprefixer');
 const concat = require('gulp-concat');
 const browserSync = require('browser-sync').create();
+const sassModuleImporter = require('sass-module-importer'); // Importez sass-module-importer ici
 
 // Accédez aux variables d'environnement définies dans le fichier .env
-const localServer = process.env.LOCAL_SERVER || 'http://localhost:8888/starter-theme/';
+const localServer = process.env.LOCAL_SERVER;
 
 function compileSass() {
     return gulp
-        .src('ALSite/source/scss/test.scss')
-        .pipe(sass().on('error', sass.logError))
+        .src('ALSite/source/scss/front.scss')
+        .pipe(sass({
+            importer: sassModuleImporter(), // Utilisez sass-module-importer pour importer automatiquement les dépendances Sass
+        }).on('error', sass.logError))
         .pipe(autoprefixer())
         .pipe(concat('style.css'))
         .pipe(gulp.dest('./'))
@@ -30,3 +33,4 @@ function watchSass() {
 
 exports.compileSass = compileSass;
 exports.watchSass = watchSass;
+

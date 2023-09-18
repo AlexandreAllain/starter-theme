@@ -1,0 +1,82 @@
+/*******************************************************************************
+ * Infos
+*******************************************************************************/
+
+/**
+ * Name: Typography
+ * Type: Element
+**/
+
+/*******************************************************************************
+ * Utils
+*******************************************************************************/
+
+@use "node_modules/sass-rem/rem";
+@use "../settings/fonts" as font;
+@use "../tools/typography" as typo;
+
+/*******************************************************************************
+ * Default styles
+*******************************************************************************/
+
+a {
+  text-decoration: underline;
+  color: inherit;
+
+  &:hover {
+    text-decoration: none;
+  }
+}
+
+strong {
+  font-weight: font.$bold;
+}
+
+hr {
+  margin: 2em 0;
+  color: inherit;
+  border: 0;
+  border-top: rem.convert(1px) solid;
+  opacity: 0.5;
+}
+
+h1 {
+  @include typo.h1;
+}
+
+h2 {
+  @include typo.h2;
+}
+
+h3 {
+  @include typo.h3;
+}
+
+h4 {
+  @include typo.h4;
+}
+
+h5 {
+  @include typo.h5;
+}
+
+h6 {
+  @include typo.h6;
+}
+
+
+/*******************************************************************************
+ * Print
+*******************************************************************************/
+
+@media print {
+  a {
+    text-decoration: none;
+    color: #000 !important;
+  }
+
+  p {
+    orphans: 3;
+    widows: 3;
+  }
+}

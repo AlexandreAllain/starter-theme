@@ -1,0 +1,99 @@
+/*******************************************************************************
+ * Infos
+*******************************************************************************/
+
+/**
+ * Name: Colors
+ * Type: Setting
+**/
+
+/*******************************************************************************
+ * Utils
+*******************************************************************************/
+
+@use "sass:map";
+
+/*******************************************************************************
+ * Variables
+*******************************************************************************/
+
+$descriptives: (
+  "black": #000,
+  "white": #fff,
+  //
+  "primary-50": #fef5ef,
+  "primary-100": #ffe0cc,
+  "primary-200": #ffc199,
+  "primary-300": #ffa366,
+  "primary-400": #ff8433,
+  "primary-500": #ff6500,
+  "primary-600": #ca5000,
+  "primary-700": #b64800,
+  "primary-800": #9c3e00,
+  "primary-900": #502000,
+  //
+  "secondary-500": #29353a,
+  //
+  "neutral-50": #f9fafb,
+  "neutral-100": #f3f4f6,
+  "neutral-200": #e5e7eb,
+  "neutral-300": #d2d5da,
+  "neutral-400": #8f95a0,
+  "neutral-500": #6c727f,
+  "neutral-600": #4d5562,
+  "neutral-700": #394150,
+  "neutral-800": #212936,
+  "neutral-900": #121826,
+  //
+  "success-50": #edfbf1,
+  "success-100": #d5f1dd,
+  "success-200": #abe2ba,
+  "success-300": #80d498,
+  "success-400": #56c575,
+  "success-500": #2cb753,
+  "success-600": #239242,
+  "success-700": #20803b,
+  "success-800": #124921,
+  "success-900": #092511,
+  //
+  "warning-50": #fff6e9,
+  "warning-100": #feeed6,
+  "warning-200": #fdddac,
+  "warning-300": #fdcc83,
+  "warning-400": #fcbb59,
+  "warning-500": #fbaa30,
+  "warning-600": #c98826,
+  "warning-700": #97661d,
+  "warning-800": #644413,
+  "warning-900": #32220a,
+  //
+  "error-50": #fbecec,
+  "error-100": #fbdbda,
+  "error-200": #f8b7b5,
+  "error-300": #f49390,
+  "error-400": #f16f6b,
+  "error-500": #de332e,
+  "error-600": #be3c38,
+  "error-700": #8e2d2a,
+  "error-800": #5f1e1c,
+  "error-900": #2f0f0e,
+);
+
+$functionals: (
+  "background": map.get($descriptives, "white"),
+  "foreground": map.get($descriptives, "black"),
+  "background-revert": map.get($descriptives, "secondary-500"),
+  "foreground-revert": map.get($descriptives, "white"),
+  "primary": map.get($descriptives, "primary-600"),
+  "secondary": map.get($descriptives, "secondary-500"),
+  "success": map.get($descriptives, "success-600"),
+  "warning": map.get($descriptives, "warning-600"),
+  "error": map.get($descriptives, "error-600"),
+  "shadow": map.get($descriptives, "black"),
+) !default;
+
+$all: map.merge($descriptives, $functionals);
+
+@function get($name) {
+  @return var(--color-#{$name}, map.get($all, $name));
+}
