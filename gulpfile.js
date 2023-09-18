@@ -5,7 +5,7 @@ const sass = require('gulp-sass')(require('sass'));
 const autoprefixer = require('gulp-autoprefixer');
 const concat = require('gulp-concat');
 const browserSync = require('browser-sync').create();
-const sassModuleImporter = require('sass-module-importer'); // Importez sass-module-importer ici
+const sassModuleImporter = require('sass-module-importer'); //
 
 // Accédez aux variables d'environnement définies dans le fichier .env
 const localServer = process.env.LOCAL_SERVER;

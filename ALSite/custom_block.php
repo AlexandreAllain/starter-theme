@@ -14,6 +14,7 @@ class Custom_Block {
 
     public function register_acf_block_type() {
         acf_register_block_type( array(
+            'mode'	=> 'edit',
             'name'              => $this->block_name,
             'title'             => $this->block_title,
             'description'       => $this->block_description,
@@ -21,7 +22,10 @@ class Custom_Block {
             'category'          => $this->block_category,
             'icon'              => $this->block_icon,
             'keywords'          => $this->block_keywords,
-            'supports'          => array( 'align' => true ),
+            'supports'          => array(
+                'align' => true,
+                'mode' => 'false',
+            ),
             'render_callback'   => array( $this, 'render_custom_block' ), // Fonction de rappel pour rendre le contenu du bloc
         ) );
 
