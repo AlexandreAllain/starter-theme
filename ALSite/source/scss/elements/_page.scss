@@ -36,7 +36,7 @@ html {
   display: flex;
   min-height: 100%; /* [3] */
   overflow-y: scroll; /* [2] */
-  font-family: font.$default;
+  font-family: font.$font-sans-serif;
   font-size: 100%; /* [1] */
   line-height: 1.5; /* [1] */
   color: map.get(color.$functionals, "foreground");

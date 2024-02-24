@@ -4,43 +4,30 @@
 
 /**
  * Name: Fonts
- * Type: Setting
+ * Type: Settings
 **/
 
 /*******************************************************************************
- * @font-face helpers
+ * Settings
 *******************************************************************************/
 
-$folder: "../../fonts/" !default;
+// Folder path
+$font-folder: "../fonts/front/";
 
-/*******************************************************************************
- * Families
-*******************************************************************************/
+// Font families
+$font-sans-serif: "Montserrat", sans-serif;
+$font-serif: "Playfair Display", serif;
+$font-default: $font-sans-serif;
 
-$sans-serif: "Montserrat", sans-serif;
-$default: $sans-serif;
-$brand: $sans-serif !default;
-
-/*******************************************************************************
- * Types
-*******************************************************************************/
-
-// $size-tiny: 12px;
-// $size-small: 14px;
-$size-regular: 16px;
-// $size-medium: 20px;
-// $size-large: 24px;
-
-/*******************************************************************************
- * Weights
-*******************************************************************************/
-
-// $thin: 100;
-// $extralight: 200;
-// $light: 300;
+// Font weights
+$thin: 100;
+$extralight: 200;
+$light: 300;
 $regular: 400;
-// $medium: 500;
-// $semibold: 600;
+$medium: 500;
+$semibold: 600;
 $bold: 700;
-// $extrabold: 800;
-// $black: 900;
+$extrabold: 800;
+$black: 900;
+
+$default: 500;

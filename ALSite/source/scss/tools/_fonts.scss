@@ -11,18 +11,44 @@
  * Utils
 *******************************************************************************/
 
+@use "sass:math";
+@use "sass:meta";
+@use "node_modules/sass-rem/rem";
 @use "../settings/fonts" as font;
 
 /*******************************************************************************
- * Variables
+ * Typo styles
 *******************************************************************************/
 
-$font-folder: font.$folder;
+@mixin h1 {
+  font-size: 3.5em;
+}
+
+@mixin h2 {
+  font-size: 3em;
+}
+
+@mixin h3 {
+  font-size: 2.5em;
+}
+
+@mixin h4 {
+  font-size: 2em;
+}
+
+@mixin h5 {
+  font-size: 1.5em;
+}
+
+@mixin h6 {
+  font-size: 1.25em;
+}
 
 /*******************************************************************************
- * Default styles
+ * Helpers
 *******************************************************************************/
 
+// Generate font-face
 @mixin
   font-face(
     $global-font-family,
@@ -30,16 +56,67 @@ $font-folder: font.$folder;
     $weight: normal,
     $style: normal,
     $id: $global-font-family,
-    $suffix: ""
+    $suffix: "-webfont"
 ) {
   @font-face {
     font-display: swap;
     font-family: $global-font-family;
     font-style: $style;
     font-weight: $weight;
-    src: url("#{$font-folder}#{$file-name}#{$suffix}.woff");
+    src: url("#{font.$font-folder}#{$file-name}#{$suffix}.woff");
     src:
-      url("#{$font-folder}#{$file-name}#{$suffix}.woff2")  format("woff2"),
-      url("#{$font-folder}#{$file-name}#{$suffix}.woff")   format("woff");
+      url("#{font.$font-folder}#{$file-name}#{$suffix}.woff2")  format("woff2"),
+      url("#{font.$font-folder}#{$file-name}#{$suffix}.woff")   format("woff");
   }
 }
+
+// Create rem base font-size with line-height
+@mixin font-size($global-font-size: $global-font-size, $line-height: auto) {
+  @include rem.convert(font-size, $global-font-size);
+
+  @if $line-height == auto {
+    line-height: math.ceil($global-font-size / $global-line-height-px) * ($global-line-height-px / $global-font-size);
+  } @else if meta.type-of($line-height) == number or $line-height == inherit or $line-height == normal {
+    @if meta.type-of($line-height) == number and math.unit($line-height) == px {
+      line-height: $line-height / $global-font-size;
+    } @else {
+      line-height: $line-height;
+    }
+  }
+}
+
+$fluid-size-fallback: false !default;
+
+/* stylelint-disable max-line-length */
+@mixin fluid-size($size-min: 16px, $size-max: 18px, $property: font-size, $vw-min: 400px, $vw-max: 960px) {
+  $u1: math.unit($size-min);
+  $u2: math.unit($size-max);
+  $u3: math.unit($vw-min);
+  $u4: math.unit($vw-max);
+
+  @if $u1 == $u2 and $u1 == $u3 and $u1 == $u4 {
+    $size-delta: $size-max - $size-min;
+    $vw-delta: $vw-max - $vw-min;
+    $vw-const: math.div($size-delta * 100, $vw-delta) * 1vw;
+    $size-limit: math.max($size-min - (math.div(($vw-min * $size-delta), $vw-delta)), 1px);
+    $operator: "+";
+
+    @if $size-min < 0 and $size-max < 0 {
+      $size-limit: math.min($size-max + (math.div(($vw-min * $size-delta), $vw-delta)), -1px);
+      $operator: "-";
+    }
+
+    @if $fluid-size-fallback {
+      #{$property}: rem.convert($size-min);
+
+      @supports (#{$property}: clamp(#{ rem.convert($size-min) }, #{ rem.convert($size-limit) } + #{ $vw-const }, #{ rem.convert($size-max) })) {
+        #{$property}: clamp(#{ rem.convert($size-min) }, #{ rem.convert($size-limit) } + #{ $vw-const }, #{ rem.convert($size-max) });
+      }
+    } @else {
+      #{$property}: clamp(#{ rem.convert($size-min) }, #{ rem.convert($size-limit) } #{ $operator } #{ $vw-const }, #{ rem.convert($size-max) });
+    }
+  } @else {
+    @error "All units must be the same.";
+  }
+}
+/* stylelint-enable max-line-length */

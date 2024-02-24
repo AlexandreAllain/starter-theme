@@ -3,7 +3,7 @@
 *******************************************************************************/
 
 /**
- * Name: Avatar
+ * Name: Tester
  * Type: Component
 **/
 
@@ -13,12 +13,13 @@
 
 @use "node_modules/sass-rem/rem";
 @use "../settings/fonts" as font;
+@use "../tools/fonts" as fonts;
 
 /*******************************************************************************
  * Variables
 *******************************************************************************/
 
-$test-font-size: font.$size-regular;
+$test-font-size: font.$regular;
 
 /*******************************************************************************
  * Default styles
@@ -26,6 +27,6 @@ $test-font-size: font.$size-regular;
 
 .c-tester {
   font-size: rem.convert($test-font-size);
-  padding: 15px;
+  @include fonts.fluid-size(12px, 56px, padding-top);
   background: #0eca24;
 }
