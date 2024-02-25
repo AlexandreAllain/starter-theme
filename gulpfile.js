@@ -29,7 +29,7 @@ function compileSass() {
 
 function compileJS() {
   return gulp
-    .src("ALSite/source/js/*.js") // Mettez à jour le chemin selon votre structure
+    .src("ALSite/source/javascript/*.js") // Mettez à jour le chemin selon votre structure
     .pipe(
       babel({
         presets: ["@babel/env"],
@@ -46,7 +46,7 @@ function watchSass() {
   });
 
   gulp.watch("ALSite/source/scss/**/*.scss", compileSass);
-  gulp.watch("ALSite/source/js/*.js", compileJS); // Surveillez les changements dans les fichiers JS
+  gulp.watch("ALSite/source/javascript/*.js", compileJS); // Surveillez les changements dans les fichiers JS
   gulp.watch("*.html").on("change", browserSync.reload);
 }
 
