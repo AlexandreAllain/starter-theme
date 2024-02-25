@@ -7,8 +7,16 @@
 {% endblock %}
 
 	<body class="{{body_class}}" data-template="base.twig">
-		<a class="skip-link screen-reader-text" href="#content">{{ _e( 'Skip to content') }}</a>
-		<header class="header" >
+	<div class="c-skiplinks js-skiplinks">
+		<nav class="c-skiplinks__nav o-wrapper o-wrapper--large">
+			<ul class="c-skiplinks__items">
+				<li class="c-skiplinks__item">
+					<a class="c-button c-button__primary" href="#content">Aller au contenu</a>
+				</li>
+			</ul>
+		</nav>
+	</div>
+		<header class="header">
 			{% block header %}
 				<div class="wrapper">
 					<h1 class="hdr-logo" role="banner">
